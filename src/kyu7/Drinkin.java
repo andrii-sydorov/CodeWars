@@ -1,7 +1,6 @@
 package kyu7;
 
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class Drinkin {
 	/**
