@@ -19,13 +19,18 @@ import java.util.Scanner;
  */
 public class PrimesInNumbers {
 	public static void main(String[] args) {
-		System.out.println("Enter your's number");
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		sc.close();
+//		System.out.println("Enter your's number");
+//		Scanner sc = new Scanner(System.in);
+//		int n = sc.nextInt();
+//		sc.close();
 		long l = System.currentTimeMillis();
-		System.out.println(factors(n));
+//		System.out.println(factors(n));
+		for(int i = 5860906; i<= 5865661; i++) {
+			System.out.println(i + " " + "\t" + factors(i));
+			System.out.println();
+		}
 		System.out.println(System.currentTimeMillis() - l);
+		System.out.println(isSimple(4));
 	}
 /**
  * to slow was optimised below
@@ -69,7 +74,7 @@ public class PrimesInNumbers {
  * @return
  */
 	static boolean isSimple(int number) {
-		for (int i = 2; i < Math.sqrt(number); i++) {
+		for (int i = 2; i <= Math.sqrt(number); i++) {
 			if (number % i == 0) {
 				return false;
 			}
