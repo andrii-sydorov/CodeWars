@@ -4,7 +4,6 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
 public class TargetDate {
 
@@ -23,19 +22,16 @@ public class TargetDate {
 
 	public static String dateNbDays(double a0, double a, double p) {
 		LocalDate ld = LocalDate.of(2016, 1, 1);
-		LocalDate n = LocalDate.now();
 		double days = 0;
 		while (a0 <= a) {
 			a0 += a0 * p / 36000;
 			days++;
 		}
-		System.out.println(days);
 		ld = ld.plusDays((long)days);
-		Calendar cd = Calendar.getInstance();
-		cd.set(2016, 0, 1);
-		cd.add(Calendar.DATE, (int)days);
-		System.out.printf("%1$TY-%1$Tm-%1$Td" + "\n", cd.getTime());
-		System.out.println( n.toString());
+//		Calendar cd = Calendar.getInstance();
+//		cd.set(2016, 0, 1);
+//		cd.add(Calendar.DATE, (int)days);
+//		System.out.printf("%1$TY-%1$Tm-%1$Td" + "\n", cd.getTime());
 		return ld.toString();
 	}
 
