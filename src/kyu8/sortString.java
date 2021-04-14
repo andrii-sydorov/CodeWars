@@ -22,7 +22,7 @@ public class sortString {
     public static void main(String[] args) {
         String[] s = {"bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"};
         System.out.println(twoSort(s));
-     //   System.out.println(twoSortWithOutCollections(s));
+        System.out.println(twoSortWithOutCollections(s));
     }
 
     public static String twoSort(String[] s) {
