@@ -35,41 +35,20 @@ public class sortString {
     }
 
     public static String twoSortWithOutCollections(String[] s) {
-        StringBuilder sb = new StringBuilder();
-        String ans = null;
-        int[] stringLength = new int[s.length];
-        int maxLength = 0;
-        for(int i = 0; i < stringLength.length; i++) {
-            stringLength[i] = s[i].length();
-            if(maxLength >= s[i].length()) {
-                maxLength = s[i].length();
-                if(maxLength == s[i].length()) {
-                    sb.append(s[i]).append(" ");
-                } else {
-                    sb.setLength(0);
-                }
+        String ans = s[0];
+        for(int i = 1; i < s.length; i++) {
+            String s1 = s[i];
+            for(int j = 0; j < Math.min(s1.length(), ans.length()); j++) {
+                if(s1.charAt(j) < ans.charAt(j)) {
+                    ans = s1;
+                    break;
+            } else if(s1.charAt(j) > ans.charAt(j)){
+                break;
+            } else {
+                continue;
             }
         }
-        String[] stringWithMaxLength = null;
-        if(sb.toString().trim().contains(" ")) {
-            stringWithMaxLength = sb.toString().split(" ");
-        } else {
-            stringWithMaxLength = new String[1];
-            stringWithMaxLength[0] = sb.toString();
         }
-
-        
-        for(int j = 0; j < stringWithMaxLength[0].length(); j++) {
-            char[] letter = new char[stringWithMaxLength.length];
-            char max = stringWithMaxLength[0].charAt(j);
-            for(int i = 0; i < stringWithMaxLength.length; i++) {
-                letter[j] = stringWithMaxLength[i].charAt(j);
-                if(max <= letter[j]) {
-                    max = letter[j];
-                }
-            } 
-        }
-        
-        return ans;
+        return String.join("***", ans.split(""));
     }
 }
