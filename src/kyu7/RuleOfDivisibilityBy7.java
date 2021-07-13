@@ -42,10 +42,8 @@ import java.util.Scanner;
  * Return on the stack number-of-steps, last-number-m-with-at-most-2-digits
  * Examples:
  * 
- * seven(371) should return [35, 1] 
- * seven(1603) should return [7, 2]
- * seven(477557101) should return [28, 7] 
- * seven(109) should return [-8, 1]
+ * seven(371) should return [35, 1] seven(1603) should return [7, 2]
+ * seven(477557101) should return [28, 7] seven(109) should return [-8, 1]
  * 
  * @author ASY
  *
@@ -57,6 +55,7 @@ public class RuleOfDivisibilityBy7 {
 		long m = sc.nextLong();
 		System.out.println(Arrays.toString(seven(m)));
 		sc.close();
+
 	}
 
 	public static long[] seven(long m) {
