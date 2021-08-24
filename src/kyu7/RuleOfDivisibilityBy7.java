@@ -55,7 +55,6 @@ public class RuleOfDivisibilityBy7 {
 		long m = sc.nextLong();
 		System.out.println(Arrays.toString(seven(m)));
 		sc.close();
-
 	}
 
 	public static long[] seven(long m) {
