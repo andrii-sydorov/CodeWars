@@ -24,7 +24,7 @@ public class SamePrimeFactors {
             if (direct.compareTo(reverse) == 0) {
                 continue;
             }
-            if (haveSamePrimeFactors(Integer.valueOf(direct.toString()), Integer.valueOf(reverse.toString()))) {
+            if (haveVersion2(Integer.valueOf(direct.toString()), Integer.valueOf(reverse.toString()))) {
                 ls.add(Integer.valueOf(direct.toString()));
             }
         }
@@ -55,5 +55,29 @@ public class SamePrimeFactors {
         }
         if (n > 1) factors.add(n);
         return factors;
+    }
+
+    private static boolean haveVersion2(int direct, int reverse) {
+        int number = 2;
+        while (direct != reverse) {
+            if (direct % number == 0 || reverse % number == 0) {
+                if (direct % number == 0) {
+                    while (direct % number == 0) {
+                        direct /= number;
+                    }
+                } else {
+                    return false;
+                }
+                if (reverse % number == 0) {
+                    while (reverse % number == 0) {
+                        reverse /= number;
+                    }
+                } else {
+                    return false;
+                }
+            } 
+            number++;
+        }
+        return true;
     }
 }
