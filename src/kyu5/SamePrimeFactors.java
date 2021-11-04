@@ -35,6 +35,7 @@ public class SamePrimeFactors {
                 if (Integer.valueOf(reverse.toString()) <= nMax) {
                     ls.add(Integer.valueOf(reverse.toString()));
                 }
+                i += ls.get(0);
             } else {
                 toAdd(is, direct, reverse);
             }
@@ -48,21 +49,17 @@ public class SamePrimeFactors {
     }
 
     private static boolean haveSamePrimeFactors(int direct, int reverse) {
-        // System.out.println(direct + " " + reverse);
+       // System.out.println(direct + " " + reverse);
         int number = 2;
         while (direct + reverse != 2) {
             if (isPrime(number)) {
                 if (direct % number == 0 || reverse % number == 0) {
-                    if (direct % number == 0) {
+                    if (direct % number == 0 && reverse % number == 0) {
                         while (direct % number == 0) {
                             direct /= number;
-                        }
-                    } else {
-                        return false;
-                    }
-                    if (reverse % number == 0) {
+                        } 
                         while (reverse % number == 0) {
-                            reverse /= number;
+                            reverse /= number;  
                         }
                     } else {
                         return false;
