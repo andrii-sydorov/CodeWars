@@ -32,7 +32,9 @@ public class SamePrimeFactors {
             }
             if (haveSamePrimeFactors(Integer.valueOf(direct.toString()), Integer.valueOf(reverse.toString()))) {
                 ls.add(Integer.valueOf(direct.toString()));
-                ls.add(Integer.valueOf(reverse.toString()));
+                if (Integer.valueOf(reverse.toString()) <= nMax) {
+                    ls.add(Integer.valueOf(reverse.toString()));
+                }
             } else {
                 toAdd(is, direct, reverse);
             }
@@ -46,22 +48,26 @@ public class SamePrimeFactors {
     }
 
     private static boolean haveSamePrimeFactors(int direct, int reverse) {
-        System.out.println(direct + " " + reverse);
+        // System.out.println(direct + " " + reverse);
         int number = 2;
         while (direct + reverse != 2) {
             if (isPrime(number)) {
-                if (direct % number == 0) {
-                    if (reverse % number == 0) {
+                if (direct % number == 0 || reverse % number == 0) {
+                    if (direct % number == 0) {
                         while (direct % number == 0) {
                             direct /= number;
                         }
+                    } else {
+                        return false;
+                    }
+                    if (reverse % number == 0) {
                         while (reverse % number == 0) {
                             reverse /= number;
                         }
                     } else {
                         return false;
                     }
-                } 
+                }
             }
             number++;
         }
@@ -93,19 +99,5 @@ public class SamePrimeFactors {
             }
         }
         return true;
-    }
-
-    private static Set<Integer> makeSet(int number) {
-        Set<Integer> s = new HashSet<>();
-        int n = 2;
-        while (number != 1) {
-            if (number % n == 0 && isPrime(n)) {
-                number /= n;
-                s.add(n);
-                continue;
-            }
-            n++;
-        }
-        return s;
     }
 }
