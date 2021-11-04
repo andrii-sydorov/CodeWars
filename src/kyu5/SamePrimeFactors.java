@@ -52,7 +52,6 @@ public class SamePrimeFactors {
        // System.out.println(direct + " " + reverse);
         int number = 2;
         while (direct + reverse != 2) {
-            if (isPrime(number)) {
                 if (direct % number == 0 || reverse % number == 0) {
                     if (direct % number == 0 && reverse % number == 0) {
                         while (direct % number == 0) {
@@ -65,7 +64,6 @@ public class SamePrimeFactors {
                         return false;
                     }
                 }
-            }
             number++;
         }
         return true;
