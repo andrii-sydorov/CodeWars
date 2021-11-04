@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Set;
-import java.util.HashSet;
 
 public class SamePrimeFactors {
 
@@ -20,24 +18,14 @@ public class SamePrimeFactors {
     public static int[] sameFactRev(int nMax) {
         System.out.println(nMax);
         List<Integer> ls = new ArrayList<>();
-        List<Integer> is = new ArrayList<>();
         for (int i = 1; i <= nMax; i++) {
             StringBuilder direct = new StringBuilder(String.valueOf(i));
             StringBuilder reverse = new StringBuilder(String.valueOf(i)).reverse();
             if (direct.compareTo(reverse) == 0) {
                 continue;
             }
-            if (contained(is, direct, reverse) || contained(ls, direct, reverse)) {
-                continue;
-            }
             if (haveSamePrimeFactors(Integer.valueOf(direct.toString()), Integer.valueOf(reverse.toString()))) {
                 ls.add(Integer.valueOf(direct.toString()));
-                if (Integer.valueOf(reverse.toString()) <= nMax) {
-                    ls.add(Integer.valueOf(reverse.toString()));
-                }
-                i += ls.get(0);
-            } else {
-                toAdd(is, direct, reverse);
             }
         }
         Collections.sort(ls);
@@ -49,50 +37,23 @@ public class SamePrimeFactors {
     }
 
     private static boolean haveSamePrimeFactors(int direct, int reverse) {
-       // System.out.println(direct + " " + reverse);
-        int number = 2;
-        while (direct + reverse != 2) {
-                if (direct % number == 0 || reverse % number == 0) {
-                    if (direct % number == 0 && reverse % number == 0) {
-                        while (direct % number == 0) {
-                            direct /= number;
-                        } 
-                        while (reverse % number == 0) {
-                            reverse /= number;  
-                        }
-                    } else {
-                        return false;
-                    }
-                }
-            number++;
-        }
-        return true;
+        // System.out.println(direct + " " + reverse);
+        List<Integer> lsDirect = makeListOfPrimes(direct);
+        List<Integer> lsReverse = makeListOfPrimes(reverse);
+        return lsDirect.equals(lsReverse) ? true : false;
     }
 
-    private static boolean contained(List<Integer> ls, StringBuilder direct, StringBuilder reverse) {
-        if (ls.contains(Integer.valueOf(direct.toString())) || ls.contains(Integer.valueOf(reverse.toString()))) {
-            return true;
-        }
-        return false;
-    }
-
-    private static void toAdd(List<Integer> ls, StringBuilder direct, StringBuilder reverse) {
-        ls.add(Integer.valueOf(direct.toString()));
-        ls.add(Integer.valueOf(reverse.toString()));
-    }
-
-    private static boolean isPrime(int n) {
-        if (n == 2) {
-            return true;
-        }
-        if (n % 2 == 0) {
-            return false;
-        }
-        for (int i = 3; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
+    private static List<Integer> makeListOfPrimes(int n) {
+        List<Integer> factors = new ArrayList<Integer>();
+        for (int i = 2; i * i <= n; i++) {
+            int cnt = 0;
+            while (n % i == 0) {
+                if (cnt == 0) factors.add(i);
+                cnt++;
+                n /= i;
             }
         }
-        return true;
+        if (n > 1) factors.add(n);
+        return factors;
     }
 }
