@@ -30,6 +30,7 @@ public class Palindrome {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         System.out.println(longestPalindrome(s));
+        System.out.println(longestPalindromeV1(s));
         sc.close();
     }
 
@@ -42,6 +43,25 @@ public class Palindrome {
         for (int i = 2; i <= s.length(); i++) {
             for (int j = 0; j <= s.length() - i; j++) {
                 ls.add(s.substring(j, i + j));
+            }
+        }
+        for (String str : ls) {
+            if (isPalindrome(str) && str.length() > max) {
+                max = str.length();
+            }
+        }
+        return max;
+    }
+
+    private static int longestPalindromeV1(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int max = 1; // while in every line is many Palindromes with length equals 1
+        List<String> ls = new ArrayList<>();
+        for (int i = s.length(); i >= 2; i--) {
+            for (int j = 0; j <= s.length() - i; j++) {
+                ls.add(s.substring(j, j + i));
             }
         }
         for (String str : ls) {
