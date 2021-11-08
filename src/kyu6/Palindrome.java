@@ -15,11 +15,7 @@ import java.util.ArrayList;
  * 
  * If the length of the input string is 0, the return value must be 0. Example:
  * 
- * "a" -> 1 
- * "aab" -> 2 
- * "abcde" -> 1 
- * "zzbaabcd" -> 4 
- * "" -> 0
+ * "a" -> 1 "aab" -> 2 "abcde" -> 1 "zzbaabcd" -> 4 "" -> 0
  * 
  * 
  */
@@ -34,6 +30,14 @@ public class Palindrome {
         sc.close();
     }
 
+    /**
+     * The first version of solution. The first we build the list of all substring
+     * and then check if the elements of thi list palindrome is. If yes, wt choose
+     * the longest palindrome
+     * 
+     * @param s The input string
+     * @return the length of the longest palindrome
+     */
     private static int longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -53,20 +57,24 @@ public class Palindrome {
         return max;
     }
 
+    /**
+     * another versio the function longestpalindrome. We started from the longest
+     * substring. It is not yet optimal.
+     * 
+     * @param s Input String
+     * @return The length of the longest palindrome
+     */
     private static int longestPalindromeV1(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }
         int max = 1; // while in every line is many Palindromes with length equals 1
-        List<String> ls = new ArrayList<>();
         for (int i = s.length(); i >= 2; i--) {
             for (int j = 0; j <= s.length() - i; j++) {
-                ls.add(s.substring(j, j + i));
-            }
-        }
-        for (String str : ls) {
-            if (isPalindrome(str) && str.length() > max) {
-                max = str.length();
+                String subString = s.substring(j, j + i);
+                if (isPalindrome(subString)) {
+                    return subString.length();
+                }
             }
         }
         return max;
