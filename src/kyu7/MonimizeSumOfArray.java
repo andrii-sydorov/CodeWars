@@ -12,15 +12,18 @@ import java.util.ArrayList;
 public class MonimizeSumOfArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int[] passed =
-        // Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
+        // int[] passed = Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(minSum(passed));
-        // int[] prod =
-        // Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
+
+        // int[] prod = Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
         // int sub_size = Integer.valueOf(sc.nextLine());
         // System.out.println(maxProduct(prod, sub_size));
-        int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
-        System.out.println(arrayLeaders(numbers));
+
+        // int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // System.out.println(arrayLeaders(numbers));
+
+        int[] array = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer :: valueOf).toArray();
+        System.out.println(MaxProduct(array));
         sc.close();
     }
 
@@ -189,6 +192,45 @@ public class MonimizeSumOfArray {
             sum += array[i];
         }
         return sum;
+    }
+
+    /**
+     * Task
+     * Given an array of integers , Find the maximum product obtained from
+     * multiplying 2 adjacent numbers in the array.
+     * 
+     * Notes
+     * Array/list size is at least 2.
+     * 
+     * Array/list numbers could be a mixture of positives, negatives also zeroes .
+     * 
+     * Input >> Output Examples
+     * adjacentElementsProduct([1, 2, 3]); ==> return 6
+     * Explanation:
+     * The maximum product obtained from multiplying 2 * 3 = 6, and they're adjacent
+     * numbers in the array.
+     * adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]); ==> return 50
+     * Explanation:
+     * Max product obtained from multiplying 5 * 10 = 50 .
+     * 
+     * adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921]) ==> return
+     * -14
+     * Explanation:
+     * The maximum product obtained from multiplying -2 * 7 = -14, and they're
+     * adjacent numbers in the array.
+     * 
+     * @param array
+     * @return the maximum product obtained from
+     *         multiplying 2 adjacent numbers in the array
+     */
+    public static int MaxProduct(int[] array) {
+        int prod = Integer.MIN_VALUE;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (prod <= array[i] * array[i + 1]) {
+                prod = array[i] * array[i + 1];
+            }
+        }
+        return prod;
     }
 
 }
