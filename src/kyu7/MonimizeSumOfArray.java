@@ -2,8 +2,10 @@ package kyu7;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Introduction and Warm-up (Highly recommended)
@@ -42,8 +44,11 @@ public class MonimizeSumOfArray {
         // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(Arrays.toString(productArray(numbers)));
 
-        int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
-        System.out.println(minimumNumber(numbers));
+        // int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // System.out.println(minimumNumber(numbers));
+
+        int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer :: valueOf).toArray();
+        System.out.println(maxTriSum(numbers));
         sc.close();
     }
 
@@ -576,6 +581,22 @@ public class MonimizeSumOfArray {
             }
         }
         return true;
+    }
+
+    public static int maxTriSum(int[] numbers) {
+        Arrays.sort(numbers);
+        Set<Integer> set = new HashSet<>();
+        for(int i = numbers.length - 1; i >= 0; i--) {
+            set.add(numbers[i]);
+            if(set.size() == 3) {
+                break;
+            }
+        }
+        int sum = 0;
+        for (int i : set) {
+            sum += i;
+        }
+        return sum;
     }
 
 }
