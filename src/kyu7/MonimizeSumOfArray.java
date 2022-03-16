@@ -29,9 +29,13 @@ public class MonimizeSumOfArray {
         // valueOf).toArray();
         // System.out.println(MaxProduct(array));
 
+        // int[] arr =
+        // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // int n = Integer.valueOf(sc.nextLine());
+        // System.out.println(nthSmallest(arr, n));
+
         int[] arr = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
-        int n = Integer.valueOf(sc.nextLine());
-        System.out.println(nthSmallest(arr, n));
+        System.out.println(maxGap(arr));
         sc.close();
     }
 
@@ -291,6 +295,59 @@ public class MonimizeSumOfArray {
             }
         }
         return arr[n - 1];
+    }
+
+    /**
+     * Task
+     * Given an array/list [] of integers , Find The maximum difference between the
+     * successive elements in its sorted form.
+     * 
+     * Notes
+     * Array/list size is at least 3 .
+     * 
+     * Array/list's numbers Will be mixture of positives and negatives also zeros_
+     * 
+     * Repetition of numbers in the array/list could occur.
+     * 
+     * The Maximum Gap is computed Regardless the sign.
+     * 
+     * Input >> Output Examples
+     * maxGap ({13,10,5,2,9}) ==> return (4)
+     * Explanation:
+     * The Maximum Gap after sorting the array is 4 , The difference between 9 - 5 =
+     * 4 .
+     * maxGap ({-3,-27,-4,-2}) ==> return (23)
+     * Explanation:
+     * The Maximum Gap after sorting the array is 23 , The difference between |-4-
+     * (-27) | = 23 .
+     * 
+     * Note : Regardless the sign of negativity .
+     * 
+     * maxGap ({-7,-42,-809,-14,-12}) ==> return (767)
+     * Explanation:
+     * The Maximum Gap after sorting the array is 767 , The difference between |
+     * -809- (-42) | = 767 .
+     * 
+     * Note : Regardless the sign of negativity .
+     * 
+     * maxGap ({-54,37,0,64,640,0,-15}) //return (576)
+     * Explanation:
+     * The Maximum Gap after sorting the array is 576 , The difference between | 64
+     * - 640 | = 576 .
+     * 
+     * Note : Regardless the sign of negativity .
+     * 
+     * @param numbers
+     * @return The maximum difference between the
+     *         successive elements in its sorted form.
+     */
+    public static int maxGap(int[] numbers) {
+        Arrays.sort(numbers);
+        int dif = Integer.MIN_VALUE;
+        for (int i = 1; i < numbers.length; i++) {
+            dif = Math.max(dif, numbers[i] - numbers[i - 1]);
+        }
+        return dif;
     }
 
 }
