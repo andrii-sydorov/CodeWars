@@ -12,18 +12,26 @@ import java.util.ArrayList;
 public class MonimizeSumOfArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int[] passed = Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
+        // int[] passed =
+        // Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(minSum(passed));
 
-        // int[] prod = Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
+        // int[] prod =
+        // Arrays.stream(sc.nextLine().split("\\W+")).mapToInt(Integer::valueOf).toArray();
         // int sub_size = Integer.valueOf(sc.nextLine());
         // System.out.println(maxProduct(prod, sub_size));
 
-        // int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // int[] numbers =
+        // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(arrayLeaders(numbers));
 
-        int[] array = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer :: valueOf).toArray();
-        System.out.println(MaxProduct(array));
+        // int[] array = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer ::
+        // valueOf).toArray();
+        // System.out.println(MaxProduct(array));
+
+        int[] arr = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        int n = Integer.valueOf(sc.nextLine());
+        System.out.println(nthSmallest(arr, n));
         sc.close();
     }
 
@@ -231,6 +239,58 @@ public class MonimizeSumOfArray {
             }
         }
         return prod;
+    }
+
+    /**
+     * Task
+     * Given an array/list [] of integers , Find the Nth smallest element in this
+     * array of integers
+     * 
+     * Notes
+     * Array/list size is at least 3 .
+     * 
+     * Array/list's numbers could be a mixture of positives , negatives and zeros .
+     * 
+     * Repetition in array/list's numbers could occur , so don't Remove Duplications
+     * .
+     * 
+     * Input >> Output Examples
+     * nthSmallest({3,1,2} ,2) ==> return (2)
+     * Explanation:
+     * Since the passed number is 2 , Then * the second smallest element in this
+     * array/list is 2*
+     * 
+     * nthSmallest({15,20,7,10,4,3} ,3) ==> return (7)
+     * Explanation:
+     * Since the passed number is 3 , Then * the third smallest element in this
+     * array/list is 7*
+     * 
+     * nthSmallest({2,169,13,-5,0,-1} ,4) ==> return (2)
+     * Explanation:
+     * Since the passed number is 4 , Then * the fourth smallest element in this
+     * array/list is 2*
+     * 
+     * nthSmallest({177,225,243,-169,-12,-5,2,92} ,5) ==> return (92)
+     * Explanation:
+     * Since the passed number is 5 , Then * the fifth smallest element in this
+     * array/list is 92*
+     * 
+     * @param arr
+     * @param n
+     * @return Find the Nth smallest element in this
+     *         array of integers
+     */
+    public static int nthSmallest(final int[] arr, final int n) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr[n - 1];
     }
 
 }
