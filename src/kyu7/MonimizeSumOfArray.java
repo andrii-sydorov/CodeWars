@@ -44,10 +44,11 @@ public class MonimizeSumOfArray {
         // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(Arrays.toString(productArray(numbers)));
 
-        // int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // int[] numbers =
+        // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(minimumNumber(numbers));
 
-        int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer :: valueOf).toArray();
+        int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         System.out.println(maxTriSum(numbers));
         sc.close();
     }
@@ -559,6 +560,7 @@ public class MonimizeSumOfArray {
 
     /**
      * claculate the prime number
+     * 
      * @param sum - integer
      * @return the closest biggest integer number
      */
@@ -571,6 +573,7 @@ public class MonimizeSumOfArray {
 
     /**
      * check if the @param is prime number
+     * 
      * @param sum
      * @return true if @param is prime number, or false, if not.
      */
@@ -583,12 +586,51 @@ public class MonimizeSumOfArray {
         return true;
     }
 
+    /**
+     * Task
+     * Given an array/list [] of n integers , find maximum triplet sum in the array
+     * Without duplications .
+     * 
+     * Notes :
+     * Array/list size is at least 3 .
+     * 
+     * Array/list numbers could be a mixture of positives , negatives and zeros .
+     * 
+     * Repetition of numbers in the array/list could occur , So (duplications are
+     * not included when summing).
+     * 
+     * Input >> Output Examples
+     * 1- maxTriSum ({3,2,6,8,2,3}) ==> return (17)
+     * Explanation:
+     * As the triplet that maximize the sum {6,8,3} in order , their sum is (17)
+     * 
+     * Note : duplications are not included when summing , (i.e) the numbers added
+     * only once .
+     * 
+     * 2- maxTriSum ({2,1,8,0,6,4,8,6,2,4}) ==> return (18)
+     * Explanation:
+     * As the triplet that maximize the sum {8, 6, 4} in order , their sum is (18) ,
+     * 
+     * Note : duplications are not included when summing , (i.e) the numbers added
+     * only once .
+     * 
+     * 3- maxTriSum ({-7,12,-7,29,-5,0,-7,0,0,29}) ==> return (41)
+     * Explanation:
+     * As the triplet that maximize the sum {12 , 29 , 0} in order , their sum is
+     * (41) ,
+     * 
+     * Note : duplications are not included when summing , (i.e) the numbers added
+     * only once .
+     * 
+     * @param numbers - an integer array
+     * @return maximum triplet sum in the array Without duplications
+     */
     public static int maxTriSum(int[] numbers) {
         Arrays.sort(numbers);
         Set<Integer> set = new HashSet<>();
-        for(int i = numbers.length - 1; i >= 0; i--) {
+        for (int i = numbers.length - 1; i >= 0; i--) {
             set.add(numbers[i]);
-            if(set.size() == 3) {
+            if (set.size() == 3) {
                 break;
             }
         }
@@ -599,4 +641,51 @@ public class MonimizeSumOfArray {
         return sum;
     }
 
+    /**
+     * Scenario
+     * Several people are standing in a row divided into two teams.
+     * The first person goes into team 1, the second goes into team 2, the third
+     * goes into team 1, and so on.
+     * 
+     * Task
+     * Given an array of positive integers (the weights of the people), return a new
+     * array/tuple of two integers, where the first one is the total weight of team
+     * 1, and the second one is the total weight of team 2.
+     * 
+     * Notes
+     * Array size is at least 1.
+     * All numbers will be positive.
+     * Input >> Output Examples
+     * rowWeights([13, 27, 49]) ==> return (62, 27)
+     * Explanation:
+     * The first element 62 is the total weight of team 1, and the second element 27
+     * is the total weight of team 2.
+     * 
+     * rowWeights([50, 60, 70, 80]) ==> return (120, 140)
+     * Explanation:
+     * The first element 120 is the total weight of team 1, and the second element
+     * 140 is the total weight of team 2.
+     * 
+     * rowWeights([80]) ==> return (80, 0)
+     * Explanation:
+     * The first element 80 is the total weight of team 1, and the second element 0
+     * is the total weight of team 2.
+     * 
+     * @param weights - an integer array
+     * @return - return a new
+     *         array/tuple of two integers, where the first one is the total weight
+     *         of team
+     *         1, and the second one is the total weight of team 2
+     */
+    public static int[] rowWeights(final int[] weights) {
+        int[] ans = new int[2];
+        for (int i = 0; i < weights.length; i++) {
+            if (i % 2 == 0) {
+                ans[0] += weights[i];
+            } else {
+                ans[1] += weights[i];
+            }
+        }
+        return ans;
+    }
 }
