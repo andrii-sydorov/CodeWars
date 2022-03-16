@@ -38,8 +38,12 @@ public class MonimizeSumOfArray {
         // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
         // System.out.println(maxGap(arr));
 
+        // int[] numbers =
+        // Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
+        // System.out.println(Arrays.toString(productArray(numbers)));
+
         int[] numbers = Arrays.stream(sc.nextLine().split("\\s+")).mapToInt(Integer::valueOf).toArray();
-        System.out.println(Arrays.toString(productArray(numbers)));
+        System.out.println(minimumNumber(numbers));
         sc.close();
     }
 
@@ -501,6 +505,77 @@ public class MonimizeSumOfArray {
             index++;
         }
         return index;
+    }
+
+    /**
+     * Task :
+     * Given a List [] of n integers , find minimum number to be inserted in a list,
+     * so that sum of all elements of list should equal the closest prime number .
+     * 
+     * Notes
+     * List size is at least 2 .
+     * 
+     * List's numbers will only positives (n > 0) .
+     * 
+     * Repetition of numbers in the list could occur .
+     * 
+     * The newer list's sum should equal the closest prime number .
+     * 
+     * Input >> Output Examples
+     * 1- minimumNumber ({3,1,2}) ==> return (1)
+     * Explanation:
+     * Since , the sum of the list's elements equal to (6) , the minimum number to
+     * be inserted to transform the sum to prime number is (1) , which will make the
+     * sum of the List equal the closest prime number (7) .
+     * 2- minimumNumber ({2,12,8,4,6}) ==> return (5)
+     * Explanation:
+     * Since , the sum of the list's elements equal to (32) , the minimum number to
+     * be inserted to transform the sum to prime number is (5) , which will make the
+     * sum of the List equal the closest prime number (37) .
+     * 3- minimumNumber ({50,39,49,6,17,28}) ==> return (2)
+     * Explanation:
+     * Since , the sum of the list's elements equal to (189) , the minimum number to
+     * be inserted to transform the sum to prime number is (2) , which will make the
+     * sum of the List equal the closest prime number (191) .
+     * 
+     * @param numbers
+     * @return minimum number to be inserted in a list,
+     *         so that sum of all elements of list should equal the closest prime
+     *         number
+     */
+    public static int minimumNumber(int[] numbers) {
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            sum += numbers[i];
+        }
+        int prime = calculatePrime(sum);
+        return prime - sum;
+    }
+
+    /**
+     * claculate the prime number
+     * @param sum - integer
+     * @return the closest biggest integer number
+     */
+    public static int calculatePrime(int sum) {
+        while (!isPrime(sum)) {
+            sum++;
+        }
+        return sum;
+    }
+
+    /**
+     * check if the @param is prime number
+     * @param sum
+     * @return true if @param is prime number, or false, if not.
+     */
+    public static boolean isPrime(int sum) {
+        for (int i = 2; i <= Math.sqrt(sum); i++) {
+            if (sum % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
