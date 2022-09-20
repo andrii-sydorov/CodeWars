@@ -20,7 +20,7 @@ import java.util.Random;
  * etc.
  * Input may be any positive or negative integer (including 0).
  * 
- * You can assume that all inputs are valid integers.
+ * You can assume that all inputs are valid integers.git 
  */
 
 public class RoundToFive {
