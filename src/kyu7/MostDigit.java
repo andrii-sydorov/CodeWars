@@ -24,10 +24,12 @@ public class MostDigit {
     }
 
     public static int findLongest(int[] numbers) {
-        int maxLength = String.valueOf(numbers[0]).length();
+        int maxLength = numbers[0] < 0 ? String.valueOf(numbers[0]).length() - 1 : String.valueOf(numbers[0]).length();
         int max = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
-            if (String.valueOf(numbers[i]).length() > maxLength) {
+            int currentLength = numbers[i] < 0 ? String.valueOf(numbers[i]).length() - 1
+                    : String.valueOf(numbers[i]).length();
+            if (currentLength > maxLength) {
                 max = numbers[i];
                 maxLength = String.valueOf(numbers[i]).length();
             }
