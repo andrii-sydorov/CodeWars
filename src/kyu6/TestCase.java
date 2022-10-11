@@ -66,7 +66,10 @@ class TestCase {
         assertAll("Testin algorithm to break according camel case",
                 () -> assertEquals("camel Casing", BreakCamelCase.camelCase("camelCasing")),
                 () -> assertEquals("camel Casing Test", BreakCamelCase.camelCase("camelCasingTest")),
-                () -> assertEquals("camelcasingtest", BreakCamelCase.camelCase("camelcasingtest")));
+                () -> assertEquals("camelcasingtest", BreakCamelCase.camelCase("camelcasingtest")),
+                () -> assertEquals("camel Casing", BreakCamelCase.camelCase2("camelCasing")),
+                () -> assertEquals("camel Casing Test", BreakCamelCase.camelCase2("camelCasingTest")),
+                () -> assertEquals("camelcasingtest", BreakCamelCase.camelCase2("camelcasingtest")));
     }
 
 }

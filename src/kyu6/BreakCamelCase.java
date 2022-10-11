@@ -47,4 +47,18 @@ public class BreakCamelCase {
         return String.join(" ", lStrings.toArray(new String[0]));
     }
 
+    public static String camelCase2(String input) {
+        char[] arr = input.toCharArray();
+        StringBuilder sBuilder = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            if (Character.isUpperCase(arr[i])) {
+                if (sBuilder.length() != 0) {
+                    sBuilder.append(" ");
+                }
+            }
+            sBuilder.append(arr[i]);
+        }
+        return sBuilder.toString();
+    }
+
 }
