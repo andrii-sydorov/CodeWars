@@ -21,7 +21,7 @@ class TestCases {
         assertEquals("Harald",
                 TwoFigters.declareWinner(new Fighter("Jerry", 30, 3), new Fighter("Harald", 20, 5), "Harald"));
     }
-    
+
     @Test
     void testFixedStrings() {
         assertEquals("code", FixStringCase.solve("code"));
@@ -61,6 +61,16 @@ class TestCases {
                 () -> assertEquals("Let's fight again!", AlphabetWar.alphabetWar("zdqmwpbs"), "Second test case"),
                 () -> assertEquals("Right side wins!", AlphabetWar.alphabetWar("zzzzs"), "Thirtd test case"),
                 () -> assertEquals("Left side wins!", AlphabetWar.alphabetWar("wwwwwwz"), "Fourth test case"));
+    }
+
+    @Test
+    void testMostDigit() {
+        assertAll("Testing most longest digits in Array",
+                () -> assertEquals(100, MostDigit.findLongest(new int[] { 1, 10, 100 })),
+                () -> assertEquals(9000, MostDigit.findLongest(new int[] { 9000, 8, 800 })),
+                () -> assertEquals(40000, MostDigit.findLongest(new int[] { 3, 40000, 100 })),
+                () -> assertEquals(100000, MostDigit.findLongest(new int[] { 1, 200, 100000 })),
+                () -> assertEquals(-10, MostDigit.findLongest(new int[] { -10, 1, 0, 1, 10 })));
     }
 
 }
