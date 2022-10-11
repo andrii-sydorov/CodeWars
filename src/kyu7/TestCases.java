@@ -73,4 +73,13 @@ class TestCases {
                 () -> assertEquals(-10, MostDigit.findLongest(new int[] { -10, 1, 0, 1, 10 })));
     }
 
+    @Test
+    void testStrayNumber() {
+        assertAll("Testing the algorithm of finding unique numbers in the array",
+                () -> assertEquals(2, StrayNumber.stray(new int[] { 1, 1, 2 })),
+                () -> assertEquals(3, StrayNumber.stray(new int[] { 17, 17, 3, 17, 17, 17, 17 })),
+                () -> assertEquals(2, StrayNumber.stray2(new int[] { 1, 1, 2 })),
+                () -> assertEquals(3, StrayNumber.stray2(new int[] { 17, 17, 3, 17, 17, 17, 17 })));
+    }
+
 }
