@@ -61,4 +61,12 @@ class TestCase {
                         "Ninth test case"));
     }
 
+    @Test
+    void testBreakCamelCase() {
+        assertAll("Testin algorithm to break according camel case",
+                () -> assertEquals("camel Casing", BreakCamelCase.camelCase("camelCasing")),
+                () -> assertEquals("camel Casing Test", BreakCamelCase.camelCase("camelCasingTest")),
+                () -> assertEquals("camelcasingtest", BreakCamelCase.camelCase("camelcasingtest")));
+    }
+
 }
