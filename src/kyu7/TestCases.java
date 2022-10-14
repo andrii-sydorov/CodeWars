@@ -81,5 +81,12 @@ class TestCases {
                 () -> assertEquals(2, StrayNumber.stray2(new int[] { 1, 1, 2 })),
                 () -> assertEquals(3, StrayNumber.stray2(new int[] { 17, 17, 3, 17, 17, 17, 17 })));
     }
+    
+    @Test
+    void testMaxLengthDifference() {
+        String[] s1 = new String[]{"hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"};
+        String[] s2 = new String[]{"cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"};
+        assertEquals(13, MaximumLengthDifference.mxdiflg(s1, s2));
+    }
 
 }
