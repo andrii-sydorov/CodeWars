@@ -88,5 +88,12 @@ class TestCases {
         String[] s2 = new String[]{"cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"};
         assertEquals(13, MaximumLengthDifference.mxdiflg(s1, s2));
     }
+    
+    @Test
+    void testSortedAndHow() {
+        assertEquals("yes, ascending", Sorted.isSortedAndHow(new int[] {1, 2}));
+        assertEquals("yes, descending", Sorted.isSortedAndHow(new int[] {15, 7, 3, -8}));
+        assertEquals("no", Sorted.isSortedAndHow(new int[] {4, 2, 30}));
+    }
 
 }
