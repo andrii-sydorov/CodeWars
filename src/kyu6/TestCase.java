@@ -83,4 +83,17 @@ class TestCase {
                 Xbonacci.tribonacci(new double[] { 0, 1, 1 }, 10), precision);
     }
 
+    @Test
+    void testFibonacciFriends() {
+        double precision = 1e-10;
+        assertArrayEquals(new double[] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 },
+                FibonacciFriends.xbonacci(new double[] { 0, 1 }, 10));
+        assertArrayEquals(new double[] { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 },
+                FibonacciFriends.xbonacci(new double[] { 1, 1 }, 10));
+        assertArrayEquals(new double[] { 0, 0, 0, 0, 1, 1, 2, 4, 8, 16 },
+                FibonacciFriends.xbonacci(new double[] { 0, 0, 0, 0, 1 }, 10));
+        assertArrayEquals(new double[] { 1, 0, 0, 0, 0, 0, 1, 2, 3, 6 },
+                FibonacciFriends.xbonacci(new double[] { 1, 0, 0, 0, 0, 0, 1 }, 10));
+    }
+
 }
