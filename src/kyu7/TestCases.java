@@ -95,5 +95,11 @@ class TestCases {
         assertEquals("yes, descending", Sorted.isSortedAndHow(new int[] {15, 7, 3, -8}));
         assertEquals("no", Sorted.isSortedAndHow(new int[] {4, 2, 30}));
     }
+    
+    @Test
+    void testGiftSorter() {
+        assertEquals("abcdef", GiftSorter.sortGiftCode("fedcba"), "sort fedcba");
+        assertEquals("abcdefghijklmnopqrstuvwxyz", GiftSorter.sortGiftCode("zyxwvutsrqponmlkjihgfedcba"), "reverse alphabet");
+    }
 
 }
