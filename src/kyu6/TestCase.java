@@ -96,4 +96,11 @@ class TestCase {
                 FibonacciFriends.xbonacci(new double[] { 1, 0, 0, 0, 0, 0, 1 }, 10));
     }
 
+    @Test
+    void testExtendedForm() {
+        assertEquals("10 + 2", ExtendedForm.expandedForm(12));
+        assertEquals("40 + 2", ExtendedForm.expandedForm(42));
+        assertEquals("70000 + 300 + 4", ExtendedForm.expandedForm(70304));
+    }
+
 }
