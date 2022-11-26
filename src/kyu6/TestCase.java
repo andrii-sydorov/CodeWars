@@ -181,4 +181,24 @@ class TestCase {
                                                 "should Work When Always Moving Up"));
         }
 
+        @Test
+        void testDataReverse() {
+                assertAll("testing the task data reverse",
+                                () -> assertArrayEquals(
+                                                new int[] { 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+                                                                0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1 },
+                                                DataReverse.dataReverse(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+                                                                0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1,
+                                                                0 }),
+                                                "test with length 32 bits"),
+                                () -> assertArrayEquals(new int[] { 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0 },
+                                                DataReverse.dataReverse(new int[] { 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0,
+                                                                1, 0, 0, 1 }),
+                                                "test with length 16 bits"),
+                                () -> assertArrayEquals(new int[] { 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0 },
+                                                DataReverse.dataReverse(new int[] { 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0,
+                                                                0, 0, 1, 1 }),
+                                                "failed tests"));
+        }
+
 }
