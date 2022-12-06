@@ -1,6 +1,8 @@
 package kyu6;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -146,7 +148,7 @@ class TestCase {
                                                                 new String[] {}),
                                                 "should Work With No Moves"),
                                 () -> assertArrayEquals(new String[] { "Ryu", "Vega", "Ryu", "Vega", "Balrog" },
-                                                CharacterSelection.streetFighterSelection(fighters, position,
+                                                CharacterSelection.streetFighterSelection(fighters, position, 
                                                                 new String[] { "up", "left", "right", "left",
                                                                                 "left" }),
                                                 "should Work With Few Moves"),
