@@ -2,6 +2,8 @@ package kyu7;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -126,6 +128,14 @@ class TestCases {
         () -> assertArrayEquals(new int[]{0, -1, -3, -6, -10}, SequenceSum.sumOfN(-4), "second test case with negative numbers"),
         () -> assertArrayEquals(new int[]{0, 1}, SequenceSum.sumOfN(1), "third test case with one element"),
         () -> assertArrayEquals(new int[]{0}, SequenceSum.sumOfN(0), "fourth test case with 0"));
+    }
+
+    @Test
+    void testAllInclusive() {
+        assertAll("testing the rotations of string  and consisting in list",
+        () -> assertEquals(true, Inclusive.containAllRots("", Arrays.asList("bsjq", "qbsj")), "first test cases"),
+        () -> assertEquals(true, Inclusive.containAllRots("bsjq", Arrays.asList("bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs")), "second test cases"),
+        () -> assertEquals(false, Inclusive.containAllRots("bsjq", Arrays.asList("TzYxlgfnhf", "yqVAuoLjMLy", "BhRXjYA", "YABhRXj", "hRXjYAB", "jYABhRX", "XjYABhR", "ABhRXjY")), "third test cases"));
     }
 
 }
