@@ -54,4 +54,13 @@ class TestStringIncrementer {
                 Arrays.toString(kPrimes.countKPrimes2(5, 500, 600)));
     }
 
+    @Test
+    public void exampleTests() {
+        SnakesLadders game = new SnakesLadders();
+        assertEquals("Player 1 is on square 38", game.play(1, 1));
+        assertEquals("Player 1 is on square 44", game.play(1, 5));
+        assertEquals("Player 2 is on square 31", game.play(6, 2));
+        assertEquals("Player 1 is on square 25", game.play(1, 1));
+    }
+
 }
