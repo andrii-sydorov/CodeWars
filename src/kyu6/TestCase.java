@@ -148,7 +148,7 @@ class TestCase {
                                                                 new String[] {}),
                                                 "should Work With No Moves"),
                                 () -> assertArrayEquals(new String[] { "Ryu", "Vega", "Ryu", "Vega", "Balrog" },
-                                                CharacterSelection.streetFighterSelection(fighters, position, 
+                                                CharacterSelection.streetFighterSelection(fighters, position,
                                                                 new String[] { "up", "left", "right", "left",
                                                                                 "left" }),
                                                 "should Work With Few Moves"),
@@ -206,8 +206,54 @@ class TestCase {
         @Test
         void testStatistics() {
                 assertAll("Statistics for an Athletic Association ",
-                () -> assertEquals("Range: 01|01|18 Average: 01|38|05 Median: 01|32|34", Stat.stat("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17")),
-                () ->assertEquals("Range: 00|31|17 Average: 02|26|18 Median: 02|22|00", Stat.stat("02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41")));
+                                () -> assertEquals("Range: 01|01|18 Average: 01|38|05 Median: 01|32|34",
+                                                Stat.stat("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17")),
+                                () -> assertEquals("Range: 00|31|17 Average: 02|26|18 Median: 02|22|00", Stat.stat(
+                                                "02|15|59, 2|47|16, 02|17|20, 2|32|34, 2|17|17, 2|22|00, 2|31|41")));
+        }
+
+        @Test
+        void testLastSurvivors() {
+                assertAll("Testing last survivors kata",
+                                () -> assertEquals("ac", LastSurvivors.lastSurvivors("abaa")),
+                                () -> assertEquals("c", LastSurvivors.lastSurvivors("zzab")),
+                                () -> assertEquals("", LastSurvivors.lastSurvivors("")),
+                                () -> assertEquals("acdeghlmnqrvyz", LastSurvivors.lastSurvivors(
+                                                "xsdlafqpcmjytoikojsecamgdkehrqqgfknlhoudqygkbxftivfbpxhxtqgpkvsrfflpgrlhkbfnyftwkdebwfidmpauoteahyh")));
+
+        }
+
+        @Test
+        void testLastSurvivorsEp2() {
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] { " ", "z" }, new int[] { 1 }));
+                assertEquals("a", LastSurvivorsEp3.lastSurvivors(new String[] { "abc", "   ", " a " },
+                                new int[] { 0, 4, 1 }));
+                assertEquals("jj", LastSurvivorsEp3.lastSurvivors(new String[] { "zj", "zj" }, new int[] { 9, 0 }));
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] { "d", " ", " ", " ", " " },
+                                new int[] { 1 }));
+                assertEquals("eeeiu", LastSurvivorsEp3.lastSurvivors(new String[] { "help us we are dying" },
+                                new int[] { 2, 0, 2, 1, 2, 0, 2, 1, 2, 0, 2, 1, 2, 0, 2, 1, 2, 0, 2, 1 }));
+                assertEquals("ail",
+                                LastSurvivorsEp3.lastSurvivors(
+                                                new String[] { "to   ", "  tal", "it   ", "  ari", "an   ", "  ism" },
+                                                new int[] { 7, 6, 4, 2, 1 }));
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] { " ", " " }, new int[] { 0 }));
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] {}, new int[] { 1, 2, 3, 4 }));
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] { "", "", "", "" }, new int[] {}));
+                assertEquals("", LastSurvivorsEp3.lastSurvivors(new String[] {}, new int[] { 1, 2, 3 }));
+                assertEquals("bbdefhilnoqrrsuvvvwy", LastSurvivorsEp3.lastSurvivors(
+                                new String[] {
+                                                "w bby   n d  r   s v",
+                                                " ff  i vd     s     ",
+                                                " e   glv          s ",
+                                                "ug k  ob  am   t   a",
+                                                " pmalfiih hw     ku ",
+                                                "oj   w    w  rbe n  ",
+                                                "d   q   iq  i k    y",
+                                                "jn     g xn  b      ",
+                                                "     navd   w      q"
+                                },
+                                new int[] { 2, 4, 4, 2, 1, 4, 7, 4, 2, 1, 7, 6, 7, 0, 2, 5, 0, 5, 6, 3 }));
         }
 
 }
