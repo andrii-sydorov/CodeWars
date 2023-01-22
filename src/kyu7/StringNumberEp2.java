@@ -22,7 +22,7 @@ import java.util.Arrays;
  * Since, the sum of its digits' factorial (1) is equal to number itself, then
  * its a Strong.
  * 
- * strong_num(123) ==> return "Not Strong !!"
+ * strong_num(123) ==> return "Not Strong !!"git
  * Since the sum of its digits' factorial of 1! + 2! + 3! = 9 is not equal to
  * number itself, then it's Not Strong .
  * 
