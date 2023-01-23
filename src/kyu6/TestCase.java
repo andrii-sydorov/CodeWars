@@ -256,4 +256,55 @@ class TestCase {
                                 new int[] { 2, 4, 4, 2, 1, 4, 7, 4, 2, 1, 7, 6, 7, 0, 2, 5, 0, 5, 6, 3 }));
         }
 
+        @Test
+        void SurvivorsEp4() {
+                assertArrayEquals(new int[] {}, SurvivorsEp4.survivors(new int[] { 0 }, new int[][] { { 0 } }),
+                                "length one");
+                assertArrayEquals(new int[] {}, SurvivorsEp4.survivors(new int[] { 0 }, new int[][] { { 9 } }),
+                                "length one");
+                assertArrayEquals(new int[] { 0 }, SurvivorsEp4.survivors(new int[] { 2 }, new int[][] { { 0 } }),
+                                "length one");
+                assertArrayEquals(new int[] {}, SurvivorsEp4.survivors(new int[] { 2 }, new int[][] { { 0, 0 } }),
+                                "length one");
+                assertArrayEquals(new int[] {}, SurvivorsEp4.survivors(new int[] { 1 }, new int[][] { { 0, 3 } }),
+                                "length one");
+                assertArrayEquals(new int[] { 0 },
+                                SurvivorsEp4.survivors(new int[] { 5 },
+                                                new int[][] { { 0, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 0 } }),
+                                "length one");
+
+                assertArrayEquals(new int[] { 0 }, SurvivorsEp4.survivors(new int[] { 1 }, new int[][] { {} }),
+                                "empty cases");
+                assertArrayEquals(new int[] {}, SurvivorsEp4.survivors(new int[] { 0 }, new int[][] { {} }),
+                                "empty cases");
+
+                assertArrayEquals(new int[] { 0 }, SurvivorsEp4.survivors(new int[] { 3, 2, 1, 0 },
+                                new int[][] { { 1, 0, 0 }, { 0, 2, 0, 0 }, { 0, 9 }, { 8, 8 } }), "multiple length");
+                assertArrayEquals(new int[] { 0, 3 },
+                                SurvivorsEp4.survivors(new int[] { 5, 1, 1, 1, 0 },
+                                                new int[][] { { 0, 0, 0, 0, 4, 0, 0, 0, 8, 0, 0, 0, 0 }, { 0, 0, 3 },
+                                                                { 0, 9, 0, 0, 0, 0, 0 }, { 1, 1, 1, 1, 1 },
+                                                                { 0, 2, 0, 0, 6, 0 } }),
+                                "multiple length");
+                assertArrayEquals(new int[] { 1, 2, 3, 4, 6 },
+                                SurvivorsEp4.survivors(new int[] { 1, 1, 9, 3, 4, 0, 3 },
+                                                new int[][] { { 2, 0, 2, 0, 0 }, { 9, 9 }, { 4 }, { 6, 6, 6 },
+                                                                { 2, 0, 2, 1 }, { 1, 3 }, { 0, 0 } }),
+                                "multiple length");
+                assertArrayEquals(new int[] { 0, 1, 2, 4 }, SurvivorsEp4.survivors(new int[] { 9, 9, 8, 2, 6 },
+                                new int[][] { {}, { 0, 0, 0, 5, 1 }, {}, { 0, 0, 0, 0 }, { 0 } }), "multiple length");
+
+                assertArrayEquals(new int[] { 0, 1, 2, 3, 5, 6, 7, 8, 10, 13, 14, 15, 16, 17 },
+                                SurvivorsEp4.survivors(
+                                                new int[] { 1, 1, 5, 7, 2, 5, 6, 2, 6, 3, 2, 6, 8, 6, 9, 2, 8, 7 },
+                                                new int[][] { {}, { 3, 0 }, { 0, 0, 0, 0, 8, 0, 0, 0 }, { 0, 3, 0 },
+                                                                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0 },
+                                                                {}, { 0 }, { 0, 0, 0, 0, 0, 7, 0 }, { 0 },
+                                                                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                                                { 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0 }, { 0 },
+                                                                { 5, 0, 0, 0, 0, 7 }, { 0 },
+                                                                { 0, 0, 1, 0, 0, 1, 0 } }),
+                                "new edge");
+        }
+
 }
