@@ -307,4 +307,16 @@ class TestCase {
                                 "new edge");
         }
 
+        @Test
+        void testPrizeDraw() {
+                assertEquals("No participants", PrizeDraw.nthRank("", new Integer[] { 4, 2, 1, 4, 3, 1, 2 }, 4));
+                assertEquals("Not enough participants",
+                                PrizeDraw.nthRank("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin",
+                                                new Integer[] { 4, 2, 1, 4, 3, 1, 2 }, 8));
+                assertEquals("Benjamin", PrizeDraw.nthRank("Addison,Jayden,Sofia,Michael,Andrew,Lily,Benjamin",
+                                new Integer[] { 4, 2, 1, 4, 3, 1, 2 }, 4));
+                assertEquals("Matthew", PrizeDraw.nthRank("Elijah,Chloe,Elizabeth,Matthew,Natalie,Jayden",
+                                new Integer[] { 1, 3, 5, 5, 3, 6 }, 2));
+        }
+
 }
