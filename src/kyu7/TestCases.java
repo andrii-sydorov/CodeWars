@@ -121,21 +121,48 @@ class TestCases {
                                 "reverse alphabet");
         }
 
-    @Test
-    void testBasicSequencePractice() {
-        assertAll("testing the basic sequence practice",
-        () -> assertArrayEquals(new int[]{0, 1, 3, 6}, SequenceSum.sumOfN(3), "first test cases"),
-        () -> assertArrayEquals(new int[]{0, -1, -3, -6, -10}, SequenceSum.sumOfN(-4), "second test case with negative numbers"),
-        () -> assertArrayEquals(new int[]{0, 1}, SequenceSum.sumOfN(1), "third test case with one element"),
-        () -> assertArrayEquals(new int[]{0}, SequenceSum.sumOfN(0), "fourth test case with 0"));
-    }
+        @Test
+        void testBasicSequencePractice() {
+                assertAll("testing the basic sequence practice",
+                                () -> assertArrayEquals(new int[] { 0, 1, 3, 6 }, SequenceSum.sumOfN(3),
+                                                "first test cases"),
+                                () -> assertArrayEquals(new int[] { 0, -1, -3, -6, -10 }, SequenceSum.sumOfN(-4),
+                                                "second test case with negative numbers"),
+                                () -> assertArrayEquals(new int[] { 0, 1 }, SequenceSum.sumOfN(1),
+                                                "third test case with one element"),
+                                () -> assertArrayEquals(new int[] { 0 }, SequenceSum.sumOfN(0),
+                                                "fourth test case with 0"));
+        }
 
-    @Test
-    void testAllInclusive() {
-        assertAll("testing the rotations of string  and consisting in list",
-        () -> assertEquals(true, Inclusive.containAllRots("", Arrays.asList("bsjq", "qbsj")), "first test cases"),
-        () -> assertEquals(true, Inclusive.containAllRots("bsjq", Arrays.asList("bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs")), "second test cases"),
-        () -> assertEquals(false, Inclusive.containAllRots("bsjq", Arrays.asList("TzYxlgfnhf", "yqVAuoLjMLy", "BhRXjYA", "YABhRXj", "hRXjYAB", "jYABhRX", "XjYABhR", "ABhRXjY")), "third test cases"));
-    }
+        @Test
+        void testAllInclusive() {
+                assertAll("testing the rotations of string  and consisting in list",
+                                () -> assertEquals(true, Inclusive.containAllRots("", Arrays.asList("bsjq", "qbsj")),
+                                                "first test cases"),
+                                () -> assertEquals(true,
+                                                Inclusive.containAllRots("bsjq",
+                                                                Arrays.asList("bsjq", "qbsj", "sjqb", "twZNsslC",
+                                                                                "jqbs")),
+                                                "second test cases"),
+                                () -> assertEquals(false, Inclusive.containAllRots("bsjq",
+                                                Arrays.asList("TzYxlgfnhf", "yqVAuoLjMLy", "BhRXjYA", "YABhRXj",
+                                                                "hRXjYAB", "jYABhRX", "XjYABhR", "ABhRXjY")),
+                                                "third test cases"));
+        }
+
+        @Test
+        void testPartOfList() {
+                assertTrue(Arrays.deepEquals(
+                                new String[][] { { "cdIw", "tzIy xDu rThG" }, { "cdIw tzIy", "xDu rThG" },
+                                                { "cdIw tzIy xDu", "rThG" } },
+                                PartsOfList.partList(new String[] { "cdIw", "tzIy", "xDu", "rThG" })));
+                assertTrue(Arrays.deepEquals(
+                                new String[][] { { "I", "wish I hadn't come" }, { "I wish", "I hadn't come" },
+                                                { "I wish I", "hadn't come" }, { "I wish I hadn't", "come" } },
+                                PartsOfList.partList(new String[] { "I", "wish", "I", "hadn't", "come" })));
+                assertTrue(Arrays.deepEquals(
+                                new String[][] {{"vJQ", "anj mQDq sOZ"}, {"vJQ anj", "mQDq sOZ"}, {"vJQ anj mQDq", "sOZ"}},
+                                PartsOfList.partList(new String[] {"vJQ", "anj", "mQDq", "sOZ"})));
+        }
 
 }
