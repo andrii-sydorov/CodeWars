@@ -88,4 +88,5 @@ public class NiceArray {
             }
         }
         return true;
+    }
 }

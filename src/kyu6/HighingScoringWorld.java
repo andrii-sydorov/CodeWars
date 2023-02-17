@@ -21,6 +21,7 @@ public class HighingScoringWorld {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your word's");
         String s = sc.nextLine();
+        sc.close();
         System.out.println(high(s));
     }
 
