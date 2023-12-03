@@ -3,6 +3,37 @@ package kyu4;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Connect Four
+ * Take a look at wiki description of Connect Four game:
+ * 
+ * Wiki Connect Four
+ * 
+ * The grid is 6 row by 7 columns, those being named from A to G.
+ * 
+ * You will receive a list of strings showing the order of the pieces which
+ * dropped in columns:
+ * 
+ * List<String> myList = new ArrayList<String>(Arrays.asList(
+ * "A_Red",
+ * "B_Yellow",
+ * "A_Red",
+ * "B_Yellow",
+ * "A_Red",
+ * "B_Yellow",
+ * "G_Red",
+ * "B_Yellow"
+ * ));
+ * The list may contain up to 42 moves and shows the order the players are
+ * playing.
+ * 
+ * The first player who connects four items of the same color is the winner.
+ * 
+ * You should return "Yellow", "Red" or "Draw" accordingly.
+ * 
+ * FUNDAMENTALS
+ */
+
 public class ConnectFour {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -64,9 +95,9 @@ public class ConnectFour {
                 "F_Yellow",
                 "E_Red",
                 "D_Yellow"));
-                System.out.println(whoIsWinner(myList[0]));
-                System.out.println(whoIsWinner2(myList[0]));
-         sc.close();
+        System.out.println(whoIsWinner(myList[0]));
+        System.out.println(whoIsWinner2(myList[0]));
+        sc.close();
     }
 
     public static String whoIsWinner(List<String> piecesPositionList) {
@@ -208,20 +239,17 @@ public class ConnectFour {
 
     public static String whoIsWinner2(List<String> piecesPositionList) {
         var board = new String[7][6];
-        for (String piece : piecesPositionList)
-        {
+        for (String piece : piecesPositionList) {
             int row, column = piece.charAt(0) - 'A';
-            for (row = 0; board[column][row] != null; row++);
+            for (row = 0; board[column][row] != null; row++)
+                ;
 
             board[column][row] = piece.substring(2);
-            for (var move : new int[][] { { 0, 1 }, { 1, 0 }, { 1, 1 }, { 1, -1 } })
-            {
-                for (int n = 0, f = 1; f >= -1; f -= 2)
-                {
-                    for (int c = column, r = row; c >= 0 && c < 7 && r >= 0 && r < 6 && piece.substring(2).equals(board[c][r]); c += move[0] * f, r += move[1] * f)
-                    {
-                        if (++n > 4)
-                        {
+            for (var move : new int[][] { { 0, 1 }, { 1, 0 }, { 1, 1 }, { 1, -1 } }) {
+                for (int n = 0, f = 1; f >= -1; f -= 2) {
+                    for (int c = column, r = row; c >= 0 && c < 7 && r >= 0 && r < 6
+                            && piece.substring(2).equals(board[c][r]); c += move[0] * f, r += move[1] * f) {
+                        if (++n > 4) {
                             return piece.substring(2);
                         }
                     }
